@@ -6,12 +6,12 @@
 #include <string>
 #include "Estudiante.h"
 #include "Funciones.h"
-#include "Estudiante.cpp"
-#include "Funciones.cpp"
 
 using namespace std;
-//ejecutar el comando "make" primero
-//Probar con ./dist/programa ./archivos/estudiantes.csv
+//Ir a la carpeta del programa en la terminal y ejecutar lo siguiente:
+//1) make
+//2) ./dist/programa estudiantes.csv
+//por cada cambio que quieran probar deberar ejecutarlo así
 
 void participantes(); //Función que muestra los participantes del grupo
 /**
@@ -30,20 +30,18 @@ int main(int argc, char** argv) {
         std::string archivo(argv[1]);
         std::ifstream lectura(archivo);
         std::ofstream escritura("promedio.csv");
-
         if (lectura) {
+            std::cout << "Si lee el archivo" << std::endl;
             for (std::string linea; getline(lectura,linea) ; ) {
                 std::vector<std::string> datos = obtenerDatos(linea);
-                A.SetIndice(cont);
-                A.SetIdent(datos.at(1));
-                for(int i=2; i<int(datos.size()); i++){
-                    A.SetNotas(std::stof(datos[i]));
-                }
+                std::cout << cont << std::endl;
+                cont++;
                 datos.clear();
             }
         }
+    }else{
+        participantes();
     }
-    participantes();
     return EXIT_SUCCESS;
 }
 
