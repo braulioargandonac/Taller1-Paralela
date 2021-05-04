@@ -6,6 +6,9 @@ using namespace std;
 Estudiante::Estudiante(){
 }
 
+Estudiante::~Estudiante(){
+}
+
 int Estudiante::GetIndice(){
     return indice;
 }
@@ -26,8 +29,8 @@ float Estudiante::GetTecnicos(){
     return tecnicos;
 }
 
-std::vector<float> Estudiante::GetNotas(){
-    return notas;
+float Estudiante::GetNotas(int i){
+    return notas.at(i);
 }
 
 void Estudiante::SetIndice(int indice1){

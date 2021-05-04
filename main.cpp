@@ -1,9 +1,3 @@
-#include <iostream>
-#include <cstdlib>
-#include <vector>
-#include <sstream>
-#include <fstream>
-#include <string>
 #include "Estudiante.h"
 #include "Funciones.h"
 
@@ -13,58 +7,41 @@ using namespace std;
 //2) ./dist/programa estudiantes.csv
 //por cada cambio que quieran probar deberar ejecutarlo así
 
-void participantes(); //Función que muestra los participantes del grupo
-/**
- *
- * @param fila una línea del archivo
- * @return vector con los datos del archivo csv
- */
-std::vector<std::string> obtenerDatos(std::string fila);
-
-
 int main(int argc, char** argv) {
     std::vector<Estudiante> E; //Se crea un vector de tipo Estudiante
-    Estudiante A;
-    int cont=1;
     if (argc > 1) {
         std::string archivo(argv[1]);
         std::ifstream lectura(archivo);
         std::ofstream escritura("promedio.csv");
+        int c=0;
         if (lectura) {
             std::cout << "Si lee el archivo" << std::endl;
             for (std::string linea; getline(lectura,linea) ; ) {
-                std::vector<std::string> datos = obtenerDatos(linea);
-                std::cout << cont << std::endl;
-                cont++;
+                std::vector<std::string> datos = ObtenerDatos(linea);
+                Estudiante A;
+                A.SetIndice(std::stoi(datos[0]));
+                A.SetIdent(datos[1]);
+                for(int j=2; j<10; j++){
+                    A.SetNotas(std::stof(datos[j]));
+                }
+                llenarPromedios(A);
+                E.push_back(A);
+                c++;
                 datos.clear();
             }
+
+            //Acá escribo el archivo promedio de ejemplo para que lo revisen
+            for(int i=0; i<c-1; i++){
+                std::string salida = std::to_string(E[i].GetIndice())+ ";" + E[i].GetIdent() + ";";
+                escritura << salida << std::endl;
+            }
+            //y esto lo hago aparte para no agregar el salto de linea al final en el ultimo ciclo
+            std::string salida = std::to_string(E[c-1].GetIndice())+ ";" + E[c-1].GetIdent() + ";";
+            escritura << salida;
         }
     }else{
-        participantes();
+        Participantes();
     }
     return EXIT_SUCCESS;
-}
-
-void participantes() {
-    std::cout << std::endl << "=== Taller 1 ===" << std::endl;
-    std::cout << std::endl << "- Braulio Argandoña"  << std::endl;
-    std::cout << std::endl << "- Kevin Salinas"  << std::endl;
-    std::cout << std::endl << "- Rodrigo Aguirre"  << std::endl;
-}
-
-std::vector<std::string> obtenerDatos(std::string fila) {
-    std::vector<std::string> arreglo;
-    std::stringstream ss(fila);
-    std::string item;
-    int cont=0;
-    // ss -> "1";"Estudiante 00001";"5.000000";"5.100000";"5.000000";"4.600000";"4.400000";"4.200000";"4.200000";"5.800000"
-
-    while (std::getline(ss, item, ';')) {
-        if(cont!=0 && cont!=1){
-            arreglo.push_back(item.c_str());
-        }
-        cont++;
-    }
-    return arreglo;
 }
 

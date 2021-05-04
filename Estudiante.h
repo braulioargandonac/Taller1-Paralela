@@ -15,9 +15,10 @@ class Estudiante{
         float tecnicos;             //PROMEDIO: Matematicas(2), Ciencias Naturales(3) y Tecnologia(5)
     public:
         Estudiante();
+        ~Estudiante();
         int GetIndice();
         std::string GetIdent();
-        std::vector<float> GetNotas();
+        float GetNotas(int);
         float GetArtes();
         float GetHumanidades();
         float GetTecnicos();
