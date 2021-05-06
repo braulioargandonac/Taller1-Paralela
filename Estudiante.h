@@ -13,6 +13,7 @@ class Estudiante{
         float artisticos;           //PROMEDIO: Arte(6) y Ed fisica(7)
         float humanistas;           //PROMEDIO: Lenguaje(0) e historia(4)
         float tecnicos;             //PROMEDIO: Matematicas(2), Ciencias Naturales(3) y Tecnologia(5)
+        float promedio;            //PROMEDIO total de notas de cada alumno
     public:
         Estudiante();
         ~Estudiante();
@@ -22,6 +23,7 @@ class Estudiante{
         float GetArtes();
         float GetHumanidades();
         float GetTecnicos();
+        float GetPromedios();
 
         void SetIndice(int);
         void SetIdent(std::string);
@@ -29,6 +31,7 @@ class Estudiante{
         void SetArtes(float);
         void SetHumanidades(float);
         void SetTecnicos(float);
+        void SetPromedios(float);
 };
 
 #endif

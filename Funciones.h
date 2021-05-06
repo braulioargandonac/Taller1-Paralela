@@ -25,5 +25,6 @@ void PromedioArte(Estudiante);
 void PromedioHumanidades(Estudiante);
 void PromedioTecnicos(Estudiante);
 void llenarPromedios(Estudiante);
+void Maximos(Estudiante);
 
 #endif // FUNCIONES_H_INCLUDED

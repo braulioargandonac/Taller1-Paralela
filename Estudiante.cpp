@@ -28,6 +28,9 @@ float Estudiante::GetHumanidades(){
 float Estudiante::GetTecnicos(){
     return tecnicos;
 }
+float Estudiante::GetPromedios(){
+    return promedio;
+}
 
 float Estudiante::GetNotas(int i){
     return notas.at(i);
@@ -52,7 +55,9 @@ void Estudiante::SetHumanidades(float nota){
 void Estudiante::SetTecnicos(float nota){
     tecnicos=nota;
 }
-
+void Estudiante::SetPromedios(float nota){
+    promedio = nota;
+}
 void Estudiante::SetNotas(float nota){
     notas.push_back(nota);
 }

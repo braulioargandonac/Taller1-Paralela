@@ -22,17 +22,24 @@ std::vector<std::string> ObtenerDatos(std::string fila) {
     return arreglo;
 }
 
+void Maximos(Estudiante A){
+    float promedios = A.GetNotas(0) + A.GetNotas(1) + A.GetNotas(2) + A.GetNotas(3) + A.GetNotas(4) + A.GetNotas(5) + A.GetNotas(6) + A.GetNotas(7);
+    promedios /= 8;
+    //std::cout << A.GetIdent() << ";" << "Promedios: " << promedios << std::endl;
+    A.SetPromedios(promedios);
+}
+
 void PromedioArte(Estudiante A){
     float suma = A.GetNotas(6)+ A.GetNotas(7);
     suma = suma / 2;
-    //std::cout << "Suma:" << suma << std::endl;
+    //std::cout << A.GetIndice() << ";" << A.GetIdent() << ";"  << "Promedio de Arte: " << suma << std::endl;
     A.SetArtes(suma);
 }
 
 void PromedioHumanidades(Estudiante A){
     float suma = A.GetNotas(0)+ A.GetNotas(4);
     suma = suma / 2;
-    //std::cout << "Suma:" << suma << std::endl;
+    //std::cout << A.GetIndice() << ";" << A.GetIdent() << ";" << "Promedio de Humanidades: " << suma << std::endl;
     A.SetHumanidades(suma);
 } 
 
@@ -40,7 +47,7 @@ void PromedioTecnicos(Estudiante A){
     //std::cout << A.GetNotas(2) <<" - "<< A.GetNotas(3) <<" - "<< A.GetNotas(5) << std::endl;
     float suma = A.GetNotas(2) + A.GetNotas(3) + A.GetNotas(5);
     suma = suma / 3;
-    //std::cout << "Suma:" << suma << std::endl;
+    //std::cout << A.GetIndice() << ";" << A.GetIdent() << ";" << "Promedio de Tecnicos: " << suma << std::endl;
     A.SetTecnicos(suma);
 } 
 
@@ -50,5 +57,7 @@ void llenarPromedios(Estudiante A){
     PromedioArte(A);
     PromedioHumanidades(A);
     PromedioTecnicos(A);
-    //std::cout << A.GetArtes() <<" - "<< A.GetHumanidades() <<" - "<<  A.GetTecnicos() << std::endl;
+    Maximos(A);
+    //std::cout << A.GetArtes() <<" ; "<< A.GetHumanidades() <<" ; "<<  A.GetTecnicos() << std::endl;
 }
+
