@@ -21,6 +21,5 @@ all: clean main.o Funciones.o Estudiante.o
 	rm -fr build
 
 clean:
-	rm -fr *.o a.out core programa dist build
-
+	rm -fr *.o a.out core programa dist build maximos.csv tecnicos.csv humanismo.csv artistico.csv
 .DEFAULT_GOAL := all
