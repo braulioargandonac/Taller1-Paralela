@@ -1,8 +1,6 @@
 #include "Estudiante.h"
 #include <iostream>
 
-using namespace std;
-
 Estudiante::Estudiante(){
 }
 
@@ -17,19 +15,8 @@ std::string Estudiante::GetIdent(){
     return ident;
 }
 
-float Estudiante::GetArtes(){
-    return artisticos;
-}
-
-float Estudiante::GetHumanidades(){
-    return humanistas;
-}
-
-float Estudiante::GetTecnicos(){
-    return tecnicos;
-}
-float Estudiante::GetPromedios(){
-    return promedio;
+float Estudiante::GetPromedios(int indice){
+    return promedio[indice];
 }
 
 float Estudiante::GetNotas(int i){
@@ -44,20 +31,10 @@ void Estudiante::SetIdent(std::string nombre){
     ident=nombre;
 }
 
-void Estudiante::SetArtes(float nota){
-    artisticos=nota;
+void Estudiante::SetPromedios(float nota, int indice){
+    promedio[indice] = nota;
 }
 
-void Estudiante::SetHumanidades(float nota){
-    humanistas=nota;
-}
-
-void Estudiante::SetTecnicos(float nota){
-    tecnicos=nota;
-}
-void Estudiante::SetPromedios(float nota){
-    promedio = nota;
-}
 void Estudiante::SetNotas(float nota){
     notas.push_back(nota);
 }
